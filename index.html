@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Idrografia_1.js"></script>
+        <script src="data/Confinecomunale_2.js"></script>
+        <script src="data/Valoreeconomicoindicativomq_3.js"></script>
+        <script src="data/Accessbilit_4.js"></script>
+        <script src="data/Vista_5.js"></script>
+        <script src="data/Luminosit_6.js"></script>
+        <script src="data/Residenzadeiproprietari_7.js"></script>
+        <script src="data/Gradodiutilizzo_8.js"></script>
+        <script src="data/Statodiconservazione_9.js"></script>
+        <script src="data/Tipologia_10.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:16
+        }).fitBounds([[41.84730990201181,14.210798815190984],[41.862226832346316,14.252458075988846]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 16,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleSatellite_0;
+        map.addLayer(layer_GoogleSatellite_0);
+        function pop_Idrografia_1(feature, layer) {
+        }
+
+        function style_Idrografia_1_0() {
+            return {
+                pane: 'pane_Idrografia_1',
+                opacity: 1,
+                color: 'rgba(140,219,223,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Idrografia_1');
+        map.getPane('pane_Idrografia_1').style.zIndex = 401;
+        map.getPane('pane_Idrografia_1').style['mix-blend-mode'] = 'normal';
+        var layer_Idrografia_1 = new L.geoJson(json_Idrografia_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Idrografia_1',
+            layerName: 'layer_Idrografia_1',
+            pane: 'pane_Idrografia_1',
+            onEachFeature: pop_Idrografia_1,
+            style: style_Idrografia_1_0,
+        });
+        bounds_group.addLayer(layer_Idrografia_1);
+        map.addLayer(layer_Idrografia_1);
+        function pop_Confinecomunale_2(feature, layer) {
+        }
+
+        function style_Confinecomunale_2_0() {
+            return {
+                pane: 'pane_Confinecomunale_2',
+                opacity: 1,
+                color: 'rgba(244,19,11,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(243,166,178,0.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Confinecomunale_2');
+        map.getPane('pane_Confinecomunale_2').style.zIndex = 402;
+        map.getPane('pane_Confinecomunale_2').style['mix-blend-mode'] = 'normal';
+        var layer_Confinecomunale_2 = new L.geoJson(json_Confinecomunale_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Confinecomunale_2',
+            layerName: 'layer_Confinecomunale_2',
+            pane: 'pane_Confinecomunale_2',
+            onEachFeature: pop_Confinecomunale_2,
+            style: style_Confinecomunale_2_0,
+        });
+        bounds_group.addLayer(layer_Confinecomunale_2);
+        map.addLayer(layer_Confinecomunale_2);
+        function pop_Valoreeconomicoindicativomq_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Valoreeconomicoindicativomq_3_0(feature) {
+            if (feature.properties['valore_imm'] >= 0.000000 && feature.properties['valore_imm'] <= 372.000000 ) {
+                return {
+                pane: 'pane_Valoreeconomicoindicativomq_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(89,90,90,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['valore_imm'] >= 372.000000 && feature.properties['valore_imm'] <= 461.000000 ) {
+                return {
+                pane: 'pane_Valoreeconomicoindicativomq_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,174,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['valore_imm'] >= 461.000000 && feature.properties['valore_imm'] <= 561.000000 ) {
+                return {
+                pane: 'pane_Valoreeconomicoindicativomq_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['valore_imm'] >= 561.000000 && feature.properties['valore_imm'] <= 651.000000 ) {
+                return {
+                pane: 'pane_Valoreeconomicoindicativomq_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(171,221,164,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['valore_imm'] >= 651.000000 && feature.properties['valore_imm'] <= 714.000000 ) {
+                return {
+                pane: 'pane_Valoreeconomicoindicativomq_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,131,186,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Valoreeconomicoindicativomq_3');
+        map.getPane('pane_Valoreeconomicoindicativomq_3').style.zIndex = 403;
+        map.getPane('pane_Valoreeconomicoindicativomq_3').style['mix-blend-mode'] = 'normal';
+        var layer_Valoreeconomicoindicativomq_3 = new L.geoJson(json_Valoreeconomicoindicativomq_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Valoreeconomicoindicativomq_3',
+            layerName: 'layer_Valoreeconomicoindicativomq_3',
+            pane: 'pane_Valoreeconomicoindicativomq_3',
+            onEachFeature: pop_Valoreeconomicoindicativomq_3,
+            style: style_Valoreeconomicoindicativomq_3_0,
+        });
+        bounds_group.addLayer(layer_Valoreeconomicoindicativomq_3);
+        function pop_Accessbilit_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_L</strong><br />' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Accessbilit_4_0(feature) {
+            switch(String(feature.properties['RICOGNIZ_A'])) {
+                case 'Alta':
+                    return {
+                pane: 'pane_Accessbilit_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bassa':
+                    return {
+                pane: 'pane_Accessbilit_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Media':
+                    return {
+                pane: 'pane_Accessbilit_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,235,67,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Accessbilit_4');
+        map.getPane('pane_Accessbilit_4').style.zIndex = 404;
+        map.getPane('pane_Accessbilit_4').style['mix-blend-mode'] = 'normal';
+        var layer_Accessbilit_4 = new L.geoJson(json_Accessbilit_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Accessbilit_4',
+            layerName: 'layer_Accessbilit_4',
+            pane: 'pane_Accessbilit_4',
+            onEachFeature: pop_Accessbilit_4,
+            style: style_Accessbilit_4_0,
+        });
+        bounds_group.addLayer(layer_Accessbilit_4);
+        function pop_Vista_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_L</strong><br />' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Vista_5_0(feature) {
+            switch(String(feature.properties['RICOGNIZ_E'])) {
+                case 'interna':
+                    return {
+                pane: 'pane_Vista_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'mista':
+                    return {
+                pane: 'pane_Vista_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,235,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'mista-interna':
+                    return {
+                pane: 'pane_Vista_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,120,180,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'panoramica':
+                    return {
+                pane: 'pane_Vista_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'panoramica-mista':
+                    return {
+                pane: 'pane_Vista_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(158,209,47,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Vista_5');
+        map.getPane('pane_Vista_5').style.zIndex = 405;
+        map.getPane('pane_Vista_5').style['mix-blend-mode'] = 'normal';
+        var layer_Vista_5 = new L.geoJson(json_Vista_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Vista_5',
+            layerName: 'layer_Vista_5',
+            pane: 'pane_Vista_5',
+            onEachFeature: pop_Vista_5,
+            style: style_Vista_5_0,
+        });
+        bounds_group.addLayer(layer_Vista_5);
+        function pop_Luminosit_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_L</strong><br />' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Luminosit_6_0(feature) {
+            switch(String(feature.properties['RICOGNIZ_1'])) {
+                case 'luminoso':
+                    return {
+                pane: 'pane_Luminosit_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,235,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'molto luminoso':
+                    return {
+                pane: 'pane_Luminosit_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'poco luminoso':
+                    return {
+                pane: 'pane_Luminosit_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Luminosit_6');
+        map.getPane('pane_Luminosit_6').style.zIndex = 406;
+        map.getPane('pane_Luminosit_6').style['mix-blend-mode'] = 'normal';
+        var layer_Luminosit_6 = new L.geoJson(json_Luminosit_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Luminosit_6',
+            layerName: 'layer_Luminosit_6',
+            pane: 'pane_Luminosit_6',
+            onEachFeature: pop_Luminosit_6,
+            style: style_Luminosit_6_0,
+        });
+        bounds_group.addLayer(layer_Luminosit_6);
+        function pop_Residenzadeiproprietari_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_L</strong><br />' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Residenzadeiproprietari_7_0(feature) {
+            switch(String(feature.properties['RICOGNIZ_R'])) {
+                case 'Altre zone d\'Italia':
+                    return {
+                pane: 'pane_Residenzadeiproprietari_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,235,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Estero':
+                    return {
+                pane: 'pane_Residenzadeiproprietari_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'In zona':
+                    return {
+                pane: 'pane_Residenzadeiproprietari_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Residenzadeiproprietari_7');
+        map.getPane('pane_Residenzadeiproprietari_7').style.zIndex = 407;
+        map.getPane('pane_Residenzadeiproprietari_7').style['mix-blend-mode'] = 'normal';
+        var layer_Residenzadeiproprietari_7 = new L.geoJson(json_Residenzadeiproprietari_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Residenzadeiproprietari_7',
+            layerName: 'layer_Residenzadeiproprietari_7',
+            pane: 'pane_Residenzadeiproprietari_7',
+            onEachFeature: pop_Residenzadeiproprietari_7,
+            style: style_Residenzadeiproprietari_7_0,
+        });
+        bounds_group.addLayer(layer_Residenzadeiproprietari_7);
+        function pop_Gradodiutilizzo_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_L</strong><br />' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Gradodiutilizzo_8_0(feature) {
+            switch(String(feature.properties['RICOGNIZ_G'])) {
+                case 'Da 2 a 4':
+                    return {
+                pane: 'pane_Gradodiutilizzo_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(104,135,200,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'da 5 a 9':
+                    return {
+                pane: 'pane_Gradodiutilizzo_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'fino a 1':
+                    return {
+                pane: 'pane_Gradodiutilizzo_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,235,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Mai':
+                    return {
+                pane: 'pane_Gradodiutilizzo_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Parziale':
+                    return {
+                pane: 'pane_Gradodiutilizzo_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,191,111,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Gradodiutilizzo_8');
+        map.getPane('pane_Gradodiutilizzo_8').style.zIndex = 408;
+        map.getPane('pane_Gradodiutilizzo_8').style['mix-blend-mode'] = 'normal';
+        var layer_Gradodiutilizzo_8 = new L.geoJson(json_Gradodiutilizzo_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Gradodiutilizzo_8',
+            layerName: 'layer_Gradodiutilizzo_8',
+            pane: 'pane_Gradodiutilizzo_8',
+            onEachFeature: pop_Gradodiutilizzo_8,
+            style: style_Gradodiutilizzo_8_0,
+        });
+        bounds_group.addLayer(layer_Gradodiutilizzo_8);
+        function pop_Statodiconservazione_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_L</strong><br />' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Statodiconservazione_9_0(feature) {
+            switch(String(feature.properties['RICOGNIZ_S'])) {
+                case 'Buono':
+                    return {
+                pane: 'pane_Statodiconservazione_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Da ristrutturare':
+                    return {
+                pane: 'pane_Statodiconservazione_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Degrado':
+                    return {
+                pane: 'pane_Statodiconservazione_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,15,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Discreto':
+                    return {
+                pane: 'pane_Statodiconservazione_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,235,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'In costruzione':
+                    return {
+                pane: 'pane_Statodiconservazione_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,140,124,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ristrutturato':
+                    return {
+                pane: 'pane_Statodiconservazione_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,120,180,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Statodiconservazione_9');
+        map.getPane('pane_Statodiconservazione_9').style.zIndex = 409;
+        map.getPane('pane_Statodiconservazione_9').style['mix-blend-mode'] = 'normal';
+        var layer_Statodiconservazione_9 = new L.geoJson(json_Statodiconservazione_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Statodiconservazione_9',
+            layerName: 'layer_Statodiconservazione_9',
+            pane: 'pane_Statodiconservazione_9',
+            onEachFeature: pop_Statodiconservazione_9,
+            style: style_Statodiconservazione_9_0,
+        });
+        bounds_group.addLayer(layer_Statodiconservazione_9);
+        function pop_Tipologia_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Numero</strong><br />' + (feature.properties['Numero'] !== null ? Autolinker.link(feature.properties['Numero'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_T</strong><br />' + (feature.properties['RICOGNIZ_T'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_T'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_S</strong><br />' + (feature.properties['RICOGNIZ_S'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_S'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_G</strong><br />' + (feature.properties['RICOGNIZ_G'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_G'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_R</strong><br />' + (feature.properties['RICOGNIZ_R'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_R'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_I</strong><br />' + (feature.properties['RICOGNIZ_I'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_I'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_N</strong><br />' + (feature.properties['RICOGNIZ_N'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_N'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_L</strong><br />' + (feature.properties['RICOGNIZ_L'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_L'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_1</strong><br />' + (feature.properties['RICOGNIZ_1'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_F</strong><br />' + (feature.properties['RICOGNIZ_F'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_F'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_E</strong><br />' + (feature.properties['RICOGNIZ_E'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_E'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RICOGNIZ_A</strong><br />' + (feature.properties['RICOGNIZ_A'] !== null ? Autolinker.link(feature.properties['RICOGNIZ_A'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>valore_imm</strong><br />' + (feature.properties['valore_imm'] !== null ? Autolinker.link(feature.properties['valore_imm'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Tipologia_10_0(feature) {
+            switch(String(feature.properties['RICOGNIZ_T'])) {
+                case 'Residenziale plurifamiliare contigua':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(148,68,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Residenziale plurifamiliare isolata':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,21,92,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Residenziale unifamiliare associata':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Residenziale unifamiliare isolata':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,15,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Deposito':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,42,156,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pubblico':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,190,205,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Rurale':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,164,58,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Servizi':
+                    return {
+                pane: 'pane_Tipologia_10',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(251,154,153,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Tipologia_10');
+        map.getPane('pane_Tipologia_10').style.zIndex = 410;
+        map.getPane('pane_Tipologia_10').style['mix-blend-mode'] = 'normal';
+        var layer_Tipologia_10 = new L.geoJson(json_Tipologia_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Tipologia_10',
+            layerName: 'layer_Tipologia_10',
+            pane: 'pane_Tipologia_10',
+            onEachFeature: pop_Tipologia_10,
+            style: style_Tipologia_10_0,
+        });
+        bounds_group.addLayer(layer_Tipologia_10);
+        map.addLayer(layer_Tipologia_10);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Tipologia<br /><table><tr><td style="text-align: center;"><img src="legend/Tipologia_10_Abitazioneplurifamiliarecontigua0.png" /></td><td>Abitazione plurifamiliare contigua</td></tr><tr><td style="text-align: center;"><img src="legend/Tipologia_10_Abitazioneplurifamiliareisolata1.png" /></td><td>Abitazione plurifamiliare isolata</td></tr><tr><td style="text-align: center;"><img src="legend/Tipologia_10_Abitazioneunifamiliareassociata2.png" /></td><td>Abitazione unifamiliare associata</td></tr><tr><td style="text-align: center;"><img src="legend/Tipologia_10_Abitazioneunifamiliareisolata3.png" /></td><td>Abitazione unifamiliare isolata</td></tr><tr><td style="text-align: center;"><img src="legend/Tipologia_10_GarageDeposito4.png" /></td><td>Garage/Deposito</td></tr><tr><td style="text-align: center;"><img src="legend/Tipologia_10_Localepubblico5.png" /></td><td>Locale pubblico</td></tr><tr><td style="text-align: center;"><img src="legend/Tipologia_10_Fabbricatorurale6.png" /></td><td>Fabbricato rurale</td></tr><tr><td style="text-align: center;"><img src="legend/Tipologia_10_Localeusoterziariocommerciale7.png" /></td><td>Locale uso terziario/commerciale</td></tr></table>': layer_Tipologia_10,'Stato di conservazione<br /><table><tr><td style="text-align: center;"><img src="legend/Statodiconservazione_9_Buono0.png" /></td><td>Buono</td></tr><tr><td style="text-align: center;"><img src="legend/Statodiconservazione_9_Daristrutturare1.png" /></td><td>Da ristrutturare</td></tr><tr><td style="text-align: center;"><img src="legend/Statodiconservazione_9_Degrado2.png" /></td><td>Degrado</td></tr><tr><td style="text-align: center;"><img src="legend/Statodiconservazione_9_Discreto3.png" /></td><td>Discreto</td></tr><tr><td style="text-align: center;"><img src="legend/Statodiconservazione_9_Incostruzione4.png" /></td><td>In costruzione</td></tr><tr><td style="text-align: center;"><img src="legend/Statodiconservazione_9_Ristrutturato5.png" /></td><td>Ristrutturato</td></tr></table>': layer_Statodiconservazione_9,'Grado di utilizzo<br /><table><tr><td style="text-align: center;"><img src="legend/Gradodiutilizzo_8_Da2a40.png" /></td><td>Da 2 a 4</td></tr><tr><td style="text-align: center;"><img src="legend/Gradodiutilizzo_8_da5a91.png" /></td><td>da 5 a 9</td></tr><tr><td style="text-align: center;"><img src="legend/Gradodiutilizzo_8_finoa12.png" /></td><td>fino a 1</td></tr><tr><td style="text-align: center;"><img src="legend/Gradodiutilizzo_8_Mai3.png" /></td><td>Mai</td></tr><tr><td style="text-align: center;"><img src="legend/Gradodiutilizzo_8_Parziale4.png" /></td><td>Parziale</td></tr></table>': layer_Gradodiutilizzo_8,'Residenza dei proprietari<br /><table><tr><td style="text-align: center;"><img src="legend/Residenzadeiproprietari_7_AltrezonedItalia0.png" /></td><td>Altre zone d\'Italia</td></tr><tr><td style="text-align: center;"><img src="legend/Residenzadeiproprietari_7_Estero1.png" /></td><td>Estero</td></tr><tr><td style="text-align: center;"><img src="legend/Residenzadeiproprietari_7_Inzona2.png" /></td><td>In zona</td></tr></table>': layer_Residenzadeiproprietari_7,'Luminosità<br /><table><tr><td style="text-align: center;"><img src="legend/Luminosit_6_Luminoso0.png" /></td><td>Luminoso</td></tr><tr><td style="text-align: center;"><img src="legend/Luminosit_6_Moltoluminoso1.png" /></td><td>Molto luminoso</td></tr><tr><td style="text-align: center;"><img src="legend/Luminosit_6_Pocoluminoso2.png" /></td><td>Poco luminoso</td></tr></table>': layer_Luminosit_6,'Vista<br /><table><tr><td style="text-align: center;"><img src="legend/Vista_5_Interna0.png" /></td><td>Interna</td></tr><tr><td style="text-align: center;"><img src="legend/Vista_5_Mista1.png" /></td><td>Mista</td></tr><tr><td style="text-align: center;"><img src="legend/Vista_5_Mistaconprevalenzainterna2.png" /></td><td>Mista con prevalenza interna</td></tr><tr><td style="text-align: center;"><img src="legend/Vista_5_Panoramica3.png" /></td><td>Panoramica</td></tr><tr><td style="text-align: center;"><img src="legend/Vista_5_Mistaconprevalenzapanoramica4.png" /></td><td>Mista con prevalenza panoramica</td></tr></table>': layer_Vista_5,'Accessbilità<br /><table><tr><td style="text-align: center;"><img src="legend/Accessbilit_4_Alta0.png" /></td><td>Alta</td></tr><tr><td style="text-align: center;"><img src="legend/Accessbilit_4_Bassa1.png" /></td><td>Bassa</td></tr><tr><td style="text-align: center;"><img src="legend/Accessbilit_4_Media2.png" /></td><td>Media</td></tr></table>': layer_Accessbilit_4,'Valore economico indicativo (€/mq)<br /><table><tr><td style="text-align: center;"><img src="legend/Valoreeconomicoindicativomq_3_Nondefinito0.png" /></td><td>Non definito</td></tr><tr><td style="text-align: center;"><img src="legend/Valoreeconomicoindicativomq_3_3724611.png" /></td><td> 372 - 461 </td></tr><tr><td style="text-align: center;"><img src="legend/Valoreeconomicoindicativomq_3_4615612.png" /></td><td> 461 - 561 </td></tr><tr><td style="text-align: center;"><img src="legend/Valoreeconomicoindicativomq_3_5616513.png" /></td><td> 561 - 651 </td></tr><tr><td style="text-align: center;"><img src="legend/Valoreeconomicoindicativomq_3_6517144.png" /></td><td> 651 - 714 </td></tr></table>': layer_Valoreeconomicoindicativomq_3,'<img src="legend/Confinecomunale_2.png" /> Confine comunale': layer_Confinecomunale_2,'<img src="legend/Idrografia_1.png" /> Idrografia': layer_Idrografia_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
